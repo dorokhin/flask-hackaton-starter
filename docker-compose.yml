@@ -3,10 +3,8 @@ services:
   postgres:
     restart: always
     image: postgres:9.6
-    environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=testdb
+    env_file:
+      - .env
     volumes:
       - ./postgres-data/postgres:/var/lib/postgresql/data
     ports:

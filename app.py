@@ -2,14 +2,20 @@ import os
 from flask import Flask
 
 redis_hostname = os.environ.get('redis_hostname', 'redis')
-test_env = os.environ.get('test_env', 'none')
+
 
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
 
 
 @app.route('/')
 def index():
     return "Index page"
+
+
+@app.route('/env')
+def env_get():
+    return os.environ.get('APP_SETTINGS', 'None')
 
 
 @app.errorhandler(404)

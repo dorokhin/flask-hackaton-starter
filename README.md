@@ -10,5 +10,8 @@
 1. Clone the repo
   ```
   $ git clone https://github.com/
+  
+  
+  docker-compose run web python run.py db migrate
   ```
 
