@@ -1,0 +1,40 @@
+version: "3.5"
+services:
+  postgres:
+    restart: always
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=testdb
+    volumes:
+      - ./postgres-data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - hack-net
+
+  web-fe:
+
+    build: .
+    env_file:
+      - .env
+    restart: always
+    command: python app.py
+    ports:
+      - target: 5000
+        published: 5000
+    networks:
+      - hack-net
+    volumes:
+      - .:/app
+
+  redis:
+    image: "redis:alpine"
+    restart: always
+    networks:
+      hack-net:
+
+networks:
+  hack-net:
+
