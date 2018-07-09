@@ -5,7 +5,7 @@ redis_hostname = os.environ.get('redis_hostname', 'redis')
 
 
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object(os.environ.get('APP_SETTINGS', 'config.DevelopmentConfig'))
 
 
 @app.route('/')
