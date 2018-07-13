@@ -13,6 +13,6 @@
   
   flask db init 
   python engine.py db init
-  docker-compose run web python engine.py db migrate
+  docker-compose run web-fe python engine.py db migrate
   ```
 
