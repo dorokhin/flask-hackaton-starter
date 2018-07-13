@@ -18,7 +18,7 @@ services:
     env_file:
       - .env
     restart: always
-    command: python app.py
+    command: python app/app.py
     ports:
       - target: 5000
         published: 5000
