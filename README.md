@@ -11,7 +11,8 @@
   ```
   $ git clone https://github.com/
   
-  
-  docker-compose run web python run.py db migrate
+  flask db init 
+  python engine.py db init
+  docker-compose run web python engine.py db migrate
   ```
 

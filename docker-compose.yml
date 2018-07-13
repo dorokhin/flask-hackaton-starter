@@ -30,6 +30,7 @@ services:
   redis:
     image: "redis:alpine"
     restart: always
+    command: redis-server --requirepass yourpassword
     networks:
       hack-net:
 

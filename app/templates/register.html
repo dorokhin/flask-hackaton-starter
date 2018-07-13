@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form class="form-register text-center" action="" method="post">
+        {{ form.hidden_tag() }}
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
+
+        {{ form.username.label(class="sr-only") }}
+        {% if form.username.errors %}
+            {{ form.username(class="form-control is-invalid", id="Username", placeholder="Username", required="", autofocus="") }}
+            {% for error in form.username.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% elif form.errors %}
+            {{ form.username(class="form-control is-valid", id="Username", placeholder="Username", required="") }}
+            <div class="valid-feedback">Looks good!</div>
+        {% else %}
+            {{ form.username(class="form-control", id="Username", placeholder="Username", required="", autofocus="") }}
+        {% endif %}
+
+        {{ form.email.label(class="sr-only") }}
+        {% if form.email.errors %}
+            {{ form.email(class="form-control is-invalid", id="email", placeholder="e-mail", required="", autofocus="") }}
+            {% for error in form.email.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% elif form.errors %}
+            {{ form.email(class="form-control is-valid", id="email", placeholder="e-mail", required="", autofocus="") }}
+            <div class="valid-feedback">Looks good!</div>
+        {% else %}
+            {{ form.email(class="form-control", id="email", placeholder="e-mail", required="", autofocus="") }}
+        {% endif %}
+
+        {{ form.password.label(class="sr-only") }}
+        {% if form.password.errors %}
+            {{ form.password(class="form-control is-invalid", placeholder="Password", required="") }}
+            {% for error in form.password.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% elif form.errors %}
+            {{ form.password(class="form-control is-valid", placeholder="Password", required="") }}
+            <div class="valid-feedback">Looks good!</div>
+        {% else %}
+            {{ form.password(class="form-control", placeholder="Password", required="") }}
+        {% endif %}
+
+        {{ form.password2.label(class="sr-only") }}
+        {% if form.password2.errors %}
+            {{ form.password2(class="form-control is-invalid", placeholder="Password", required="") }}
+            {% for error in form.password2.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% elif form.errors %}
+            {{ form.password2(class="form-control is-valid", placeholder="Password", required="") }}
+            <div class="valid-feedback">Looks good!</div>
+        {% else %}
+            {{ form.password2(class="form-control", placeholder="Password", required="") }}
+        {% endif %}
+
+        {{ form.recaptcha }}
+        {% if form.recaptcha.errors %}
+            {% for error in form.recaptcha.errors %}
+                <input type="hidden" class="form-control is-invalid">
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+
+    </form>
+{% endblock %}
