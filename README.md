@@ -9,7 +9,7 @@
 
 1. Clone the repo
   ```
-  $ git clone https://github.com/
+  $ git clone git@github.com:dorokhin/flask-hackaton-starter.git
   
   flask db init 
   python engine.py db init
